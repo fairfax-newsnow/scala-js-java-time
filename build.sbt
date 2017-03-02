@@ -2,7 +2,7 @@ import sbt.Keys._
 import org.scalajs.sbtplugin.cross.CrossProject
 
 val commonSettings: Seq[Setting[_]] = Seq(
-  version := "0.2.1-SNAPSHOT",
+  version := "0.2.1",
   organization := "org.scala-js",
   scalaVersion := "2.12.1",
   scalacOptions ++= Seq("-deprecation", "-feature", "-Xfatal-warnings"),
@@ -16,10 +16,10 @@ val commonSettings: Seq[Setting[_]] = Seq(
       Some("scm:git:git@github.com:scala-js/scala-js-java-time.git")))
 )
 
-lazy val root: Project = project.in(file(".")).
-  enablePlugins(ScalaJSPlugin).
-  settings(commonSettings).
-  settings(
+lazy val scalaJsTimeRoot: Project = project.in(file("."))
+  .settings(commonSettings)
+  .enablePlugins(ScalaJSPlugin)
+  .settings(
     name := "scalajs-java-time",
 
     mappings in (Compile, packageBin) ~= {
@@ -72,7 +72,7 @@ lazy val testSuite = CrossProject(
   jsSettings(
     name := "java.time testSuite on JS"
   ).
-  jsConfigure(_.dependsOn(root)).
+  jsConfigure(_.dependsOn(scalaJsTimeRoot)).
   jvmSettings(
     name := "java.time testSuite on JVM",
     libraryDependencies +=
