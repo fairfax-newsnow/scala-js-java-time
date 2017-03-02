@@ -41,14 +41,14 @@ trait ChronoLocalDateTime[D <: ChronoLocalDate]
       .`with`(ChronoField.EPOCH_DAY, toLocalDate().toEpochDay)
       .`with`(ChronoField.NANO_OF_DAY, toLocalTime().toNanoOfDay())
 }
-
-object ChronoLocalDateTime {
-  def from(temporal: TemporalAccessor): ChronoLocalDateTime[_] = {
-    temporal match {
-      case t: ChronoLocalDateTime[_] => t
-      case t =>
-        val chrono = t.query(TemporalQueries.chronology())
-        chrono.localDateTime(temporal)
-    }
-  }
-}
+//
+//object ChronoLocalDateTime {
+//  def from(temporal: TemporalAccessor): ChronoLocalDateTime[_] = {
+//    temporal match {
+//      case t: ChronoLocalDateTime[_] => t
+//      case t =>
+//        val chrono = t.query(TemporalQueries.chronology())
+//        chrono.localDateTime(temporal)
+//    }
+//  }
+//}

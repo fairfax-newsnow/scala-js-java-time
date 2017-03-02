@@ -150,6 +150,7 @@ final class LocalDateTime private (val date: LocalDate, val time: LocalTime)
     }
   }
 
+  override def compareTo(o: ChronoLocalDateTime[_]): Int = ???
 }
 
 object LocalDateTime {
@@ -187,6 +188,8 @@ object LocalDateTime {
         }
     }
   }
+
+
 
 }
 
